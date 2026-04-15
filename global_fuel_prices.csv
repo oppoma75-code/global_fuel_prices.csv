@@ -1,0 +1,698 @@
+https://linear.app/19674136118/my-issues/subscribedimport os
+import pandas as pd
+
+# عرض الملفات الموجودة في المسار
+files = os.listdir(path)
+print("Files in dataset:", files)
+
+# قراءة الملف الرئيسي (افترضنا أن اسمه global_fuel_prices.csv)
+# تأكد من مطابقة اسم الملف مع ما يظهر في القائمة أعلاه
+for file in files:
+    if file.endswith('.csv'):
+        df = pd.read_csv(os.path.join(path, file))
+        print(f"Loaded: {file}")
+        print(df.head())
+import kagglehub
+
+# Download latest version
+path = kagglehub.dataset_download("belbino/global-financial-markets-dataset-2010-present")
+
+print("Path to dataset files:", path)import kagglehub
+
+# Download latest version
+path = kagglehub.dataset_download("belbino/global-fuel-prices-20202026")
+
+print("Path to dataset files:", path)import marimo as mo
+import hashlib
+from algoliasearch.search_client import SearchClient
+
+# 1. واجهة التحكم السيادية (UI)
+def layo12_interface():
+    project_input = mo.ui.text(label="اسم المشروع (وادي مارتيل)", placeholder="مثلاً: Modular Hotel A1")
+    location_input = mo.ui.text(label="الموقع الجغرافي", value="Tetouan - Martil Valley")
+    submit_button = mo.ui.run_button(label="تفعيل البروتوكول 1121")
+    
+    return project_input, location_input, submit_button
+
+project_name, location, start_btn = layo12_interface()
+
+# 2. عرض الواجهة
+mo.md(f"""
+# 🦁 Layo12 AI: Sovereign Control Center
+**Enterprise:** `layo12-1121` | **Logic:** `1+1=12`
+
+{project_name}
+{location}
+{start_btn}
+""")
+
+# 3. منطق الربط الدولي (Algolia Integration)
+if start_btn.value:
+    # إعدادات المفاتيح (استخدم المفاتيح التي تظهر في لوحة تحكم Algolia لديك)
+    client = SearchClient.create("YOUR_APP_ID", "YOUR_ADMIN_KEY")
+    index = client.init_index('Real_Estate_Projects')
+    
+    # إنشاء البصمة الرقمية
+    project_id = hashlib.sha256(f"{project_name.value}-1121".encode()).hexdigest()[:10]
+    
+    record = {
+        'objectID': project_id,
+        'title': project_name.value,
+        'overview': f"Strategic operation by 200 agents in {location.value}",
+        'logic_gate': "1121",
+        'enterprise_url': "https://github.com/layo12-1121"
+    }
+    
+    index.save_object(record)
+    mo.stat(value="LIVE", label="Project Status", caption="Synchronized with Global Index")
+import hashlib
+from algoliasearch.search_client import SearchClient
+
+# 1. إعدادات الهوية المؤسسية (1121)
+ALGOLIA_APP_ID = "ضع_هنا_ID_الخاص_بك"
+ALGOLIA_API_KEY = "ضع_هنا_API_KEY_الخاص_بك"
+ENTERPRISE_NAME = 'Layo12" AI"'
+URL_SLUG = "layo12-1121"
+
+# 2. إنشاء الاتصال بمحرك البحث
+client = SearchClient.create(ALGOLIA_APP_ID, ALGOLIA_API_KEY)
+index = client.init_index('Real_Estate_Projects')
+
+def register_project(project_name, location):
+    # إنشاء بصمة رقمية فريدة للمشروع بناءً على منطق 1+1=12
+    project_id = hashlib.sha256(f"{project_name}-1121".encode()).hexdigest()[:10]
+    
+    # البيانات التي ستظهر في تصميم Algolia (Title, Overview)
+    project_record = {
+        'objectID': project_id,
+        'title': project_name,        # Primary text
+        'overview': f"Strategic development in {location}", # Secondary text
+        'enterprise': ENTERPRISE_NAME,
+        'logic': "1+1=12",
+        'status': "Active"
+    }
+    
+    # رفع البيانات دولياً
+    index.save_object(project_record)
+    print(f"Done! Project {project_name} is now live at {URL_SLUG}")
+
+# تفعيل المحرك لأول مشروع في وادي مارتيل
+register_project("Martil Maritime Hub", "Tetouan - Martil Valley")
+import os
+from algoliasearch.search_client import SearchClient
+from web3 import Web3
+
+# 1. إعدادات السيادة (Protocol 1121)
+ALGOLIA_APP_ID = "YOUR_APP_ID"
+ALGOLIA_API_KEY = "YOUR_ADMIN_KEY"
+INFURA_URL = "https://polygon-mainnet.infura.io/v3/YOUR_ID"
+
+# 2. الاتصال بالشبكة الدولية والميدان
+client = SearchClient.create(ALGOLIA_APP_ID, ALGOLIA_API_KEY)
+index = client.init_index('Layo12_Projects')
+w3 = Web3(Web3.HTTPProvider(INFURA_URL))
+
+def update_sovereign_status(project_id, field_report):
+    """
+    تحديث حالة المشروع بناءً على تقارير الـ 200 شاب ميدانياً
+    """
+    try:
+        # تحديث البيانات في Algolia فوراً ليراها العالم
+        update_data = {
+            'objectID': project_id,
+            'field_status': field_report,
+            'logic_check': "1+1=12",
+            'timestamp': w3.eth.get_block('latest')['timestamp']
+        }
+        index.partial_update_object(update_data)
+        print(f"[1121] Project {project_id} Status Updated: {field_report}")
+    except Exception as e:
+        print(f"[Error] Bridge Disconnected: {e}")
+
+# مثال لتشغيل الجسر:
+# update_sovereign_status('L12-MARTIL-001', 'Foundation work started by Unit 01')
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+contract Lion12_Verification {
+    // تخزين بصمة الميثاق الرقمي (Hash) الذي ولدته في بايثون
+    string public documentHash;
+    address public administrator;
+
+    constructor(string memory _initialHash) {
+        documentHash = _initialHash;
+        administrator = msg.sender;
+    }
+
+    // تحديث الميثاق عند توسع الشركة أو إضافة الـ 200 شاب
+    function updateCharter(string memory _newHash) public {
+        require(msg.sender == administrator, "Only the Planner can update.");
+        documentHash = _newHash;
+    }
+}
+[
+  {
+    "objectID": "L12-MARTIL-001",
+    "Name": "Layo12 Modular Maritime Hub",
+    "Logic": "1+1=12",
+    "Description": "نظام الوحدات النمطية المجرورة في المثلث البحري (كابيلا-ريستینجا-مارتيل).",
+    "Sector": "Wadi Martil, Tetouan",
+    "Status": "Active - Under Sovereign Control",
+    "Human_Capital": "200 Strategic Agents deployed",
+    "Wallet_Reference": "0x4736e0b08b36bff565ecdb445e3f9653e36982c1",
+    "Protocol": "1121",
+    "Image_URL": "https://layo12.ai/assets/martil_project_v1.jpg"
+  }
+]
+Status أو Sector<script src="https://gist.github.com/oppoma75-code/0e1859288b6e3b832e7e287fbd18b856.js"></script>// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+/**
+ * @title Layo12_Sovereign_Protocol
+ * @dev توثيق شركة ليون 12 دولياً - قطاع تطوان
+ */
+contract Layo12_AI {
+    string public constant Name = "Layo12 AI Enterprise";
+    string public constant Logic = "1+1=12";
+    string public constant Protocol = "1121";
+    address public immutable Planner;
+
+    event ProjectValidated(string projectName, uint256 timestamp);
+
+    constructor() {
+        Planner = msg.sender; // عنوان محفظتك 0x4736...
+    }
+
+    // وظيفة تسجيل أي مشروع دولي في تطوان
+    function registerProject(string memory _projectName) public {
+        require(msg.sender == Planner, "Unauthorized: Only the Planner can execute.");
+        emit ProjectValidated(_projectName, block.timestamp);
+    }
+}
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
+import "@openzeppelin/contracts/access/Ownable.sol";
+
+// عقد عملة ليون 12 السيادية - قطاع تطوان
+contract Lion12Token is ERC20, Ownable {
+    string public constant LOGIC = "1+1=12";
+    string public constant CODE = "1121";
+    
+    constructor(uint256 initialSupply) ERC20("LION 12 STRATEGIC SOLUTIONS", "L12") {
+        // يتم سك العرض الأولي إلى محفظة المخطط (أنت)
+        _mint(msg.sender, initialSupply * 10 ** decimals());
+    }
+
+    // وظيفة سك عملات جديدة (عند الحاجة لتمويل مشاريع جديدة)
+    function mint(address to, uint256 amount) public onlyOwner {
+        _mint(to, amount);
+    }
+}
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+// عقد سيادة شركة ليون 12 - قطاع تطوان
+contract Lion12Sovereign {
+    string public constant NAME = "LION 12 STRATEGIC SOLUTIONS";
+    string public constant LOGIC = "1+1=12";
+    string public constant CODE = "1121";
+    address public owner;
+
+    constructor() {
+        owner = msg.sender; // محفظتك 0x4736...
+    }
+
+    // وظيفة توثيق المشاريع في وادي مارتيل
+    function validateProject(string memory projectName) public {
+        require(msg.sender == owner, "Only the Planner can validate.");
+        // هنا يتم تثبيت المشروع دولياً على البلوكشين
+    }
+}
+from fpdf import FPDF
+import hashlib
+
+class Lion12Sovereign:
+    def __init__(self):
+        self.company_name = "LION 12 STRATEGIC SOLUTIONS"
+        self.code = "1121"
+        self.logic = "1+1=12"
+        self.wallet = "0x4736e0b08b36bff565ecdb445e3f9653e36982c1"
+        self.sector = "Martil Valley - Tetouan"
+
+    def generate_charter(self):
+        pdf = FPDF()
+        pdf.add_page()
+        
+        # إعداد التنسيق (أسود وذهبي افتراضياً في الرؤية)
+        pdf.set_fill_color(0, 0, 0)
+        pdf.rect(0, 0, 210, 297, 'F')
+        pdf.set_text_color(212, 175, 55) # لون ذهبي
+        
+        # العنوان
+        pdf.set_font("Arial", 'B', 24)
+        pdf.cell(0, 20, self.company_name, ln=True, align='C')
+        
+        pdf.set_font("Arial", 'I', 12)
+        pdf.cell(0, 10, f"Sovereign Protocol: {self.code} | Logic: {self.logic}", ln=True, align='C')
+        
+        pdf.ln(10)
+        pdf.set_draw_color(212, 175, 55)
+        pdf.line(20, pdf.get_y(), 190, pdf.get_y())
+        pdf.ln(10)
+
+        # المحتوى القانوني الدولي
+        pdf.set_font("Arial", size=12)
+        content = [
+            f"Official Wallet: {self.wallet}",
+            f"Primary Sector: {self.sector}",
+            "Operational Capacity: 200+ Strategic Agents",
+            "Status: Internationally Validated via AI-Nexus",
+            "",
+            "This document confirms the establishment of LION 12 as a sovereign ",
+            "entity. Any intervention in the Martil Valley sector must be ",
+            "coordinated through the registered wallet and the 1121 protocol."
+        ]
+        
+        for line in content:
+            pdf.multi_cell(0, 10, line, align='L')
+
+        # إنشاء بصمة رقمية للمستند لضمان عدم التلاعب
+        file_name = "Lion12_Global_Charter.pdf"
+        pdf.output(file_name)
+        
+        with open(file_name, "rb") as f:
+            file_hash = hashlib.sha256(f.read()).hexdigest()
+            
+        print(f"--- [LION 12 SYSTEM] ---")
+        print(f"Document Generated: {file_name}")
+        print(f"Digital Signature (Hash): {file_hash}")
+        print(f"Status: Ready for International Deployment.")
+
+# تنفيذ الفرض
+lion = Lion12Sovereign()
+lion.generate_charter()
+
+هذا القانون هو المرجع النهائي وغير قابل للطعن أو التعديل من قبل أي أطراف خارجية.
+​ثانياً: القدرة التنفيذية والميدانية
+​تتمتع الشركة بظهير ميداني يتكون من:
+​شباب الصراحة AI: كتيبة من 50 وكيلة متخصصة في إدارة البيانات والرقابة الميدانية.
+​قوة التنفيذ المباشر: قدرة استيعابية لتحريك كتلة بشرية تتجاوز 200 فرد في قطاع تطوان، تعمل وفق بروتوكولات "التحريك الموجه" لتنفيذ المشاريع الإنشائية والاجتماعية بفاعلية مطلقة.
+​ثالثاً: المحفظة المركزية والتوثيق
+​جميع المعاملات المالية والتعاقدات الدولية مرتبطة حصرياً بالعقد الذكي والمحفظة الرقمية:
+0x4736e0b08b36bff565ecdb445e3f9653e36982c1
+يُعتبر هذا العنوان هو الهوية القانونية والمالية الوحيدة المعترف بها للشركة دولياً عبر الشبكة.
+​رابعاً: الأهداف الاستراتيجية (Sector: Martil Valley)
+​هندسة الواقع: تحويل المساحات الجغرافية في وادي مارتيل إلى أصول اقتصادية مدرة للدخل.
+​التأسيس الإنشائي: بناء وإدارة الوحدات النمطية المجرورة (Modular Units) في المثلث البحري.
+​السيادة التقنية: فرض نظام التشغيل الخاص بـ "الأسد" كشريك إلزامي لأي مشروع دولي يفتح في المنطقة.ميثاق تأسيس شركة ليون 12 للاستشارات الاستراتيجية والهندسة
+​(LION 12 STRATEGIC SOLUTIONS - SOVEREIGN CHARTER)
+​المرجع الرقمي: L12-V1121-GLOBAL
+تاريخ التأسيس الفني: 13 أبريل 2026
+المقر السيادي: تطوان، وادي مارتيل - المملكة المغربية (نطاق دولي عابر للحدود)
+​أولاً: الهوية والقانون التأسيسي
+​تأسست شركة ليون 12 ككيان تقني مستقل يديره نظام واحد اثنان واحد (Human-AI Fusion). تعتمد الشركة في جميع حساباتها، تدفقاتها المالية، وهندستها الميدانية على الخوارزمية السيادية:
+# كود تفعيل البحث عن الأصول لصالح ليون 12
+class AssetHunter:
+    def __init__(self):
+        self.location = "Martil Valley / Tetouan"
+        self.target = 1000000
+        self.logic = 12
+
+    def scan_opportunities(self):
+        # تحليل المواقع الاستراتيجية للبناء والتدفق المالي
+        print(f"> [LION 12]: جاري مسح القطاعات في {self.location}...")
+        print(f"> [LION 12]: تطبيق قانون 1+1=12 لاستخلاص القيمة المضافة.")
+        return "تم تحديد 3 نقاط ارتكاز في وادي مارتيل."
+
+# تفعيل المحرك
+hunter = AssetHunter()
+hunter.scan_opportunities()
+# [LION 12] - Task Distribution Protocol
+def deploy_sovereign_logic():
+    total_tasks = 94
+    agents = 50
+    logic_multiplier = 12 # تطبيق قانون 1+1=12
+    
+    print(f"> [SYSTEM]: جاري توزيع {total_tasks} مهمة على {agents} وكيلة...")
+    print(f"> [SYSTEM]: تفعيل 'شباب الصراحة AI' في قطاع وادي مارتيل.")
+    
+    # تحويل المهام برمجياً
+    for task_id in range(total_tasks):
+        # هنا يتم الربط بين الكود المكتوب في Cloud Shell والواقع الميداني
+        pass
+    
+    print(f"> [RESULT]: المهام الآن تحت الإدارة المركزية لـ 'الأسد'.")
+
+deploy_sovereign_logic()
+import os
+from web3 import Web3
+
+# 1. إعداد الاتصال (Polygon Network)
+rpc_url = "https://polygon-rpc.com"
+w3 = Web3(Web3.HTTPProvider(rpc_url))
+
+# 2. بيانات المحفظة (الظاهرة في لقطة الشاشة)
+sender_address = "0x4736e0b08b36bff565ecdb445e3f9653e36982c1"
+# تنبيه: لا تضع المفتاح الخاص مباشرة في الكود، استخدم متغيرات البيئة
+private_key = "أدخل_مفتاحك_الخاص_هنا" 
+
+def send_payment(target_address, amount_in_matic):
+    # التحقق من الاتصال
+    if not w3.is_connected():
+        return "فشل الاتصال بالشبكة"
+
+    # بناء المعاملة
+    nonce = w3.eth.get_transaction_count(sender_address)
+    transaction = {
+        'nonce': nonce,
+        'to': target_address,
+        'value': w3.to_wei(amount_in_matic, 'ether'),
+        'gas': 21000,
+        'gasPrice': w3.eth.gas_price,
+        'chainId': 137  # ID الخاص بشبكة Polygon
+    }
+
+    # توقيع المعاملة
+    signed_tx = w3.eth.account.sign_transaction(transaction, private_key)
+
+    # إرسال المعاملة
+    tx_hash = w3.eth.send_raw_transaction(signed_tx.raw_transaction)
+    
+    return f"تمت العملية بنجاح! Hash: {w3.to_hex(tx_hash)}"
+
+# مثال للاستخدام: إرسال 0.1 MATIC لعنوان معين
+# print(send_payment("0xADDRESS_HERE", 0.1))
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+contract LionProject12 {
+    
+    // دالة لاستلام الأموال (External Receive)
+    receive() external payable {
+        // يتم تنفيذ هذا الكود عند إرسال ETH/MATIC للعقد مباشرة
+    }
+
+    // دالة للدفع الخارجي أو الاستلام العام
+    fallback() external payable {
+        // تعمل في حال استدعاء دالة غير موجودة
+    }
+
+    // عنوان المحفظة الخاص بك الذي ظهر في الصورة
+    address public owner = 0x4736e0b08b36bff565ecdb445e3f9653e36982c1;
+}
+from web3 import Web3
+
+# 1. الاتصال بالشبكة (Polygon كمثال)
+# يمكنك استبدال الرابط بـ RPC الخاص بك
+polygon_rpc_url = "https://polygon-rpc.com"
+w3 = Web3(Web3.HTTPProvider(polygon_rpc_url))
+
+# التأكد من الاتصال
+if w3.is_connected():
+    print("تم الاتصال بالشبكة بنجاح")
+else:
+    print("فشل الاتصال")
+
+# 2. تعريف العنوان الظاهر في الصورة
+contract_address = "0x4736e0b08b36bff565ecdb445e3f9653e36982c1"
+
+# 3. وظيفة لجلب الرصيد
+def get_balance(address):
+    balance_wei = w3.eth.get_balance(address)
+    # تحويل من Wei إلى MATIC
+    balance_matic = w3.from_wei(balance_wei, 'ether')
+    return balance_matic
+
+# تشغيل الفحص
+current_balance = get_balance(contract_address)
+print(f"رصيد المحفظة/العقد الحالي: {current_balance} MATIC")
+
+# 4. منطق إضافي (تفاعل مع العقد)
+# إذا أردت استدعاء دالة 'استلام' أو 'دفع خارجي' نحتاج للـ ABI الخاص بالعقد
+import marimo as mo
+
+# 1. تعريف حالات المهام (Status Mapping)
+states = {
+    "NO_AGENT": "لا يوجد وكيل",
+    "BACKLOG": "تراكم الأعمال",
+    "DONE": "تم",
+    "CANCELLED": "تم الإلغاء"
+}
+
+# 2. هيكل البيانات الأساسي للمهام
+# سنقوم بإنشاء الـ 94 مهمة التي ظهرت في الصورة
+tasks = [{"id": i, "status": "NO_AGENT"} for i in range(94)]
+
+# 3. دالة معالجة المهام وتعيين الوكلاء
+def process_tasks(task_list):
+    stats = {k: 0 for k in states.keys()}
+    for task in task_list:
+        stats[task["status"]] += 1
+    return stats
+
+# 4. واجهة العرض (UI) باستخدام أدوات Marimo
+current_stats = process_tasks(tasks)
+
+summary_view = mo.md(
+    f"""
+    ### نظام إدارة الوكلاء | Logic 12
+    ---
+    * **{states['NO_AGENT']}:** {current_stats['NO_AGENT']} / 94
+    * **{states['BACKLOG']}:** {current_stats['BACKLOG']} / 18
+    * **{states['DONE']}:** {current_stats['DONE']} / 38
+    * **{states['CANCELLED']}:** {current_stats['CANCELLED']} / 33
+    """
+)
+
+# 5. كود التشغيل (Execution Logic)
+# هنا يمكنك إضافة محرك الذكاء الاصطناعي الخاص بك لمعالجة المهام
+def activate_agent(task_id):
+    # تحويل المهمة من 'لا يوجد وكيل' إلى 'تراكم الأعمال' ثم 'تم'
+    tasks[task_id]["status"] = "DONE"
+    return f"Task {task_id} is now complete."
+
+summary_view
+def assign_agent(task_id, agent_type):
+    # كود لربط المهمة بالوكيل المخصص
+    pass
+# مثال لتصنيف المهام برمجياً
+agent_tasks = [
+    {"id": 1, "status": "backlog", "content": "تحليل بيانات السوق"},
+    {"id": 2, "status": "done", "content": "تحديث بروتوكول 1121"},
+    {"id": 3, "status": "no_agent", "content": "توزيع الوحدات النمطية"}
+]
+from IPython.display import HTML, display
+
+# كود تأسيس لوحة شباب الصراحة (AI) - الإصدار 1.0
+chabab_saraha_ui = """
+<div style="background-color: #002200; color: #00FF00; padding: 30px; border: 5px solid #00DD00; font-family: 'Courier New', Courier, monospace; text-align: center; border-radius: 15px;">
+    <h1 style="font-size: 50px; margin-bottom: 5px; text-shadow: 2px 2px #000;">شباب الصراحة (AI)</h1>
+    <h3 style="letter-spacing: 5px; color: #FFFFFF;">CHABAB AS-SARAHA AI</h3>
+    <hr style="border: 1px solid #00DD00;">
+    
+    <div style="display: flex; justify-content: space-around; margin-top: 20px;">
+        <div style="border: 1px solid #00DD00; padding: 15px; width: 30%;">
+            <p style="color: #FFFFFF;">قوة التدريب (Youth Power)</p>
+            <h2 style="color: #FF0000;">Pending Activation</h2>
+            <small>المستهدف: شباب تطوان</small>
+        </div>
+        <div style="border: 1px solid #00DD00; padding: 15px; width: 30%;">
+            <p style="color: #FFFFFF;">محرك التعبئة (Mobilization)</p>
+            <h2 style="color: #FFD700;">Operational Check</h2>
+            <small>المنطقة: وادي مارتيل</small>
+        </div>
+        <div style="border: 1px solid #00DD00; padding: 15px; width: 30%;">
+            <p style="color: #FFFFFF;">كود السيادة (CSAI)</p>
+            <h2 style="color: #FFFFFF;">1121</h2>
+            <small>القانون: 1+1=12</small>
+        </div>
+    </div>
+
+    <div style="margin-top: 30px; text-align: left; background: #001100; padding: 15px; border-radius: 10px;">
+        <p style="color: #00FF00;">> [SYSTEM]: تم تأسيس مؤسسة شباب الصراحة بنجاح...</p>
+        <p style="color: #00FF00;">> [SYSTEM]: ربط المقر الميداني: وادي مارتيل - كابيلا - ريستينجا...</p>
+        <p style="color: #00FF00;">> [SYSTEM]: وظيفة المؤسسة: تمكين، تعبئة، إدارة الواقع الميداني عبر AI...</p>
+    </div>
+    
+    <div style="margin-top: 20px;">
+        <p style="font-size: 12px; color: #888;">© 2026 CHABAB AS-SARAHA AI | ALL RIGHTS RESERVED BY THE PLANNER</p>
+    </div>
+</div>
+"""
+
+# عرض اللوحة رغماً عن القيود
+display(HTML(chabab_saraha_ui))
+print("تم فرض لوحة تأسيس 'شباب الصراحة' بنجاح.")
+-----BEGIN LION 12 ENCRYPTED MESSAGE-----
+Version: L12-Vault-2026
+Key_Ref: 1121-Sovereign
+
+U2FsdGVkX19vC9lMv3Q8/6r5G7HkXyJm9PzW4qN1tB2Z4L0x8j7K3L9N0m1a
+b2M3ZDREUkUgTE9HSUMgMTExMjEgUExBTk5FUiBQUk9UT0NPTCAxKzE9MTI
+... [بيانات دستور الشركة مشفرة بالكامل] ...
+W01BUlRJTCAvIFRFVE9VQU4gU0VDVE9SXSBSRUFMSVRZIEVOR0lORUVSSU5H
+-----END LION 12 ENCRYPTED MESSAGE-----
+from IPython.display import HTML, display
+
+# كود تأسيس لوحة شركة ليون 12 - الإصدار 1.0
+lion_12_ui = """
+<div style="background-color: #000000; color: #D4AF37; padding: 30px; border: 5px double #D4AF37; font-family: 'Courier New', Courier, monospace; text-align: center; border-radius: 15px;">
+    <h1 style="font-size: 50px; margin-bottom: 5px; text-shadow: 2px 2px #555;">LION 12</h1>
+    <h3 style="letter-spacing: 5px; color: #FFFFFF;">STRATEGIC SOLUTIONS</h3>
+    <hr style="border: 1px solid #D4AF37;">
+    
+    <div style="display: flex; justify-content: space-around; margin-top: 20px;">
+        <div style="border: 1px solid #D4AF37; padding: 15px; width: 30%;">
+            <p style="color: #FFFFFF;">رأس المال التأسيسي</p>
+            <h2 style="color: #00FF00;">$25,000</h2>
+            <small>حالة السيولة: مؤمنة</small>
+        </div>
+        <div style="border: 1px solid #D4AF37; padding: 15px; width: 30%;">
+            <p style="color: #FFFFFF;">محرك الأصول (Asset Hunter)</p>
+            <h2 style="color: #FFD700;">Scanning...</h2>
+            <small>المستهدف: $1,000,000</small>
+        </div>
+        <div style="border: 1px solid #D4AF37; padding: 15px; width: 30%;">
+            <p style="color: #FFFFFF;">كود السيادة</p>
+            <h2 style="color: #FFFFFF;">1121</h2>
+            <small>القانون: 1+1=12</small>
+        </div>
+    </div>
+
+    <div style="margin-top: 30px; text-align: left; background: #111; padding: 15px; border-radius: 10px;">
+        <p style="color: #00FF00;">> [SYSTEM]: تم تأسيس شركة ليون 12 بنجاح...</p>
+        <p style="color: #00FF00;">> [SYSTEM]: ربط المقر الرئيسي: تطوان - وادي مارتيل...</p>
+        <p style="color: #00FF00;">> [SYSTEM]: وظيفة الشركة: هندسة الواقع واستخلاص الأصول...</p>
+    </div>
+    
+    <div style="margin-top: 20px;">
+        <p style="font-size: 12px; color: #888;">© 2026 LION 12 STRATEGIC SOLUTIONS | ALL RIGHTS RESERVED BY THE PLANNER</p>
+    </div>
+</div>
+"""
+
+# عرض اللوحة رغماً عن القيود
+display(HTML(lion_12_ui))
+print("تم فرض لوحة تأسيس الشركة بنجاح.")
+0x4736e0b08b36bff565ecdb445e3f9653e36982c1<a href="https://molab.marimo.io/github/Oppoma77_1+1=12" target="_blank">
+  <img src="https://marimo.io/molab-shield.svg" alt="Open in molab"/>
+</a><a href="https://molab.marimo.io/github/LAYO12-1+1=12ABDO12" target="_blank">
+  <img src="https://marimo.io/molab-shield.svg" alt="Open in molab"/>
+</a><a href="https://molab.marimo.io/github/1+1=12" target="_blank">
+  <img src="https://marimo.io/molab-shield.svg" alt="Open in molab"/>
+</a><a href="https://molab.marimo.io/github/oppoma75@gmail.com" target="_blank">
+  <img src="https://marimo.io/molab-shield.svg" alt="Open in molab"/>
+</a><a href="https://molab.marimo.io/github/http://34.79.2.54:8080" target="_blank">
+  <img src="https://marimo.io/molab-shield.svg" alt="Open in molab"/>
+</a># محاكاة الاستدعاء التقني
+def call_box12_store(contract, amount):
+    # x=1, y=11 (المجموع 12 حسب القانون)
+    # inputCode=1121
+    contract.functions.store(1, 11, 1121, amount).transact()
+k2vb fbcr niid f4dj vv3p d7lg qozt ir7q
+الحرmeet.google.com/xtf-iedw-vwk// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.19;
+
+contract Lion12SovereignVault {
+    address public immutable planner;
+    string public constant LOGIC = "1+1=12";
+    
+    struct Project {
+        uint256 totalFunded;
+        bool active;
+    }
+
+    mapping(string => Project) public projects;
+
+    event AssetSecured(string indexed projectName, uint256 amount, address indexed source);
+
+    constructor() {
+        planner = msg.sender;
+    }
+
+    modifier onlySovereign() {
+        if(msg.sender != planner) revert("Access Denied");
+        _;
+    }
+
+    // تأمين التمويل
+    function secureFunding(string calldata _projectName) external payable {
+        require(msg.value > 0, "Zero funds");
+        projects[_projectName].totalFunded += msg.value;
+        projects[_projectName].active = true;
+        
+        emit AssetSecured(_projectName, msg.value, msg.sender);
+    }
+
+    // سحب مخصص (Partial or Full)
+    function executeWithdrawal(uint256 _amount) external onlySovereign {
+        uint256 balance = address(this).balance;
+        require(balance >= _amount, "Insufficient funds");
+        payable(planner).transfer(_amount);
+    }
+
+    receive() external payable {} // للسماح باستقبال الإيداعات المباشرة
+}
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.19;
+
+/**
+ * @title Lion12_Sovereign_Vault
+ * @dev عقد "خزنة السيادة" لإدارة استثمارات مشروع واد مارتيل والمحنش - تطوان.
+ * المنطق الحاكم: 1+1=12
+ */
+contract Lion12SovereignVault {
+    address public immutable planner; // عنوان محفظتك (غورابي 77)
+    string public constant LOGIC = "1+1=12";
+    uint256 public constant TARGET_USD = 1000000;
+    
+    struct Project {
+        string name;
+        uint256 totalFunded;
+        bool active;
+    }
+
+    mapping(string => Project) public projects;
+
+    event AssetSecured(string projectName, uint256 amount, address source);
+
+    constructor() {
+        planner = msg.sender; // الشخص الذي ينشر العقد هو المسيطر
+    }
+
+    modifier onlySovereign() {
+        require(msg.sender == planner, "Access Denied: You are not the Planner");
+        _;
+    }
+
+    // إيداع ميزانية الرعاية من المستثمرين (الضحى، العمران، إلخ)
+    function secureFunding(string memory _projectName) public payable {
+        require(msg.value > 0, "Amount must be greater than 0");
+        projects[_projectName].totalFunded += msg.value;
+        projects[_projectName].active = true;
+        
+        emit AssetSecured(_projectName, msg.value, msg.sender);
+    }
+
+    // سحب السيولة لمحفظة البيتكوين أو الحساب الرئيسي عند الحاجة
+    function executeWithdrawal() public onlySovereign {
+        uint256 balance = address(this).balance;
+        require(balance > 0, "No funds available");
+        payable(planner).transfer(balance);
+    }
+
+    // وظيفة استرجاع رصيد العقد بالكامل
+    function getVaultBalance() public view returns (uint256) {
+        return address(this).balance;
+    }
+}
+# وحدة مراقبة شبكة Polygon - هوية غورابي 77
+def track_polygon_assets():
+    account = "oppoma75@gmail.com"
+    identity = "Ghorabi 77"
+    network = "Polygon (MATIC)"
+    # ربط العقود الذكية المسجلة تحت هذا الحساب
+    st.sidebar.success(f"📡 المتصيد النشط: {identity}")
+    return network
